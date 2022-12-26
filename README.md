@@ -40,5 +40,5 @@ And then his IP and his location get logged and send it to the Webhook.
 If you found a bug or you have a Suggestion, open a pull request.
 
 **ToDo's**
-- [ ] VPN/Proxy Checker
+- [x] VPN/Proxy Checker
 - [ ] Self Hosting
