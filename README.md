@@ -1,7 +1,12 @@
 ## Discord IP Logger
 
-Its an Advanced Tool to Trick users and get their IP.
-Its very easy to Setup.
+Its an Advanced Tool to Trick users and get their IP.<br>
+Its very easy to Setup.<br>
+<br>
+**The log includes:**
+- [x] IP
+- [x] Geolocation
+- [x] User-Agent
 
 ### Requirements
 
@@ -30,7 +35,7 @@ And now everyone see's in discord the discord loading gif, like if the image isn
 Then they will click on the image and click on `Show Original`.
 And then his IP and his location get logged and send it to the Webhook.
 
-#### Information
+### Information
 
 If you found a bug or you have a Suggestion, open a pull request.
 
